@@ -1,10 +1,15 @@
 package cn.maxcj.util;
 
 import cn.maxcj.config.MySQLConfig;
+import lombok.experimental.UtilityClass;
 
 import java.sql.*;
 
-public class DBUtil {
+/**
+ * @author maxcj
+ */
+@UtilityClass
+public class DataBaseUtil {
 
     static {
         try {
