@@ -21,6 +21,8 @@ public class User extends BaseModel {
 
     private String email;
 
+    private String password;
+
     private Integer status;
 
     private List<Integer> roleList;
