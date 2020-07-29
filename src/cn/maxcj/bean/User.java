@@ -3,6 +3,8 @@ package cn.maxcj.bean;
 import cn.maxcj.bean.base.BaseModel;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author maxcj
  */
@@ -20,5 +22,7 @@ public class User extends BaseModel {
     private String email;
 
     private Integer status;
+
+    private List<Integer> roleList;
 
 }
