@@ -1,7 +1,5 @@
 package cn.maxcj.util;
 
-import lombok.experimental.UtilityClass;
-
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -10,10 +8,9 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author maxcj
  */
-@UtilityClass
 public class PasswordUtil {
 
-    public static String encPassword(String password){
+    public static String encPassword(String password) {
         MessageDigest md5 = null;
         byte[] digest = null;
         try {
