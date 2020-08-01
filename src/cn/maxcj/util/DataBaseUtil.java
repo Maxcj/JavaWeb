@@ -1,14 +1,13 @@
 package cn.maxcj.util;
 
 import cn.maxcj.config.MySQLConfig;
-import lombok.experimental.UtilityClass;
 
+import java.lang.reflect.Method;
 import java.sql.*;
 
 /**
  * @author maxcj
  */
-@UtilityClass
 public class DataBaseUtil {
 
     static {
@@ -56,6 +55,37 @@ public class DataBaseUtil {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void handleParams(PreparedStatement ps, Object[] params) {
+        try {
+            if (params != null) {
+
+                for (int i = 0; i < params.length; i++) {
+                    ps.setObject(i + 1, params[i]);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void invokeSet(Object obj, String columnName, Object columnValue) {
+        try {
+            Class<?> clazz = columnValue.getClass();
+            if (columnValue instanceof java.sql.Timestamp) {
+                clazz = java.util.Date.class;
+            }
+            Method m = obj.getClass().getDeclaredMethod("set" + char2UpperCase(columnName), clazz);
+            m.invoke(obj, columnValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static String char2UpperCase(String str) {
+        return str.toUpperCase().substring(0, 1) + ColumnUtil.lineToHump(str.substring(1));
     }
 
 }
