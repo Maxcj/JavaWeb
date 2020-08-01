@@ -7,36 +7,26 @@ import java.util.Date;
 /**
  * @author maxcj
  */
-public class Role extends BaseModel {
+public class UserRole extends BaseModel {
 
-    private Integer roleCode;
+    private Integer roleId;
 
-    private String roleName;
+    private Integer UserId;
 
-    private String desc;
-
-    public Integer getRoleCode() {
-        return roleCode;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRoleCode(Integer roleCode) {
-        this.roleCode = roleCode;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public Integer getUserId() {
+        return UserId;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setUserId(Integer userId) {
+        UserId = userId;
     }
 
     @Override

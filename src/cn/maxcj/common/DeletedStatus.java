@@ -5,8 +5,8 @@ package cn.maxcj.common;
  */
 public class DeletedStatus {
 
-    private static final Integer YES = 1;
+    public static final Integer YES = 1;
 
-    private static final Integer NO = 0;
+    public static final Integer NO = 0;
 
 }

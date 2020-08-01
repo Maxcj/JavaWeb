@@ -1,4 +1,4 @@
-package cn.maxcj.config;
+package cn.maxcj.core.config;
 
 /**
  * @author maxcj

@@ -18,15 +18,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String email, String password) throws Exception {
-        String sql = "select * from tb_user where email = ?";
-        User o = (User) userDAO.selectObjectTemplate(sql, User.class, new Object[]{email});
+
+        if (StringUtils.isBlank(email) || StringUtils.isBlank(password)) {
+            throw new BusinessException("param is invalid.");
+        }
+
+        User o = userDAO.getUserByEmail(email);
         if (Objects.isNull(o)) {
-            throw new BusinessException("Account & Password is not match");
+            throw new BusinessException("Account & Password is not match.");
         }
         if (StringUtils.equals(PasswordUtil.encPassword(password), o.getPassword())) {
             return o;
         }
-        throw new BusinessException("Account & Password is not match");
+        throw new BusinessException("Account & Password is not match.");
     }
 
 }

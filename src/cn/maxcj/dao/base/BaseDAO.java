@@ -18,19 +18,19 @@ import java.util.Objects;
  */
 public abstract class BaseDAO {
 
-    public Object executeInsertTemplate(String sql, final Class clazz, Object[] params) {
-        return executeTemplate(sql, DbOperateType.INSERT, params, clazz, null);
+    protected Integer executeInsertTemplate(String sql, final Class clazz, Object[] params) {
+        return (Integer) executeTemplate(sql, DbOperateType.INSERT, params, clazz, null);
     }
 
-    public Object executeDeleteTemplate(String sql, final Class clazz, Object[] params) {
-        return executeTemplate(sql, DbOperateType.DELETE, params, clazz, null);
+    protected Integer executeDeleteTemplate(String sql, final Class clazz, Object[] params) {
+        return (Integer) executeTemplate(sql, DbOperateType.DELETE, params, clazz, null);
     }
 
-    public Object executeUpdateTemplate(String sql, final Class clazz, Object[] params) {
-        return executeTemplate(sql, DbOperateType.UPDATE, params, clazz, null);
+    protected Integer executeUpdateTemplate(String sql, final Class clazz, Object[] params) {
+        return (Integer) executeTemplate(sql, DbOperateType.UPDATE, params, clazz, null);
     }
 
-    public Object selectObjectTemplate(String sql, final Class clazz, Object[] params) {
+    protected Object selectObjectTemplate(String sql, final Class clazz, Object[] params) {
         return executeTemplate(sql, DbOperateType.SELECT, params, clazz, (conn, ps, rs) -> {
             Object obj = null;
             try {
@@ -53,7 +53,7 @@ public abstract class BaseDAO {
     }
 
 
-    public List selectListTemplate(String sql, final Class clazz, Object[] params) {
+    protected List selectListTemplate(String sql, final Class clazz, Object[] params) {
         return (List) executeTemplate(sql, DbOperateType.SELECT, params, clazz, (conn, ps, rs) -> {
             List list = Lists.newArrayList();
             try {

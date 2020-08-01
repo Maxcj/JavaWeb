@@ -2,6 +2,7 @@ package cn.maxcj.servlet;
 
 import cn.maxcj.bean.User;
 import cn.maxcj.service.UserService;
+import cn.maxcj.service.impl.UserServiceImpl;
 import cn.maxcj.util.ResponseUtil;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import java.io.IOException;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
-    private static UserService userService;
+    private static UserService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +28,7 @@ public class LoginServlet extends HttpServlet {
             User user = userService.login(email, password);
             request.getSession().setAttribute("email", user.getEmail());
             request.getSession().setAttribute("role", user.getRoleList());
-            response.sendRedirect("allIndex.jsp");
+            response.sendRedirect("index.jsp");
         } catch (Exception e) {
             ResponseUtil.response(response, e.getMessage(), "login.jsp");
         }

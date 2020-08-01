@@ -1,6 +1,6 @@
 package cn.maxcj.util;
 
-import cn.maxcj.config.MySQLConfig;
+import cn.maxcj.core.config.MySQLConfig;
 
 import java.lang.reflect.Method;
 import java.sql.*;
@@ -60,7 +60,6 @@ public class DataBaseUtil {
     public static void handleParams(PreparedStatement ps, Object[] params) {
         try {
             if (params != null) {
-
                 for (int i = 0; i < params.length; i++) {
                     ps.setObject(i + 1, params[i]);
                 }
@@ -81,7 +80,6 @@ public class DataBaseUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static String char2UpperCase(String str) {

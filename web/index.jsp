@@ -10,6 +10,10 @@
   <body>
     <jsp:include page="/page/frame/top.jsp"></jsp:include>
 
+    <br/>
+    hello
+    <%=session.getAttribute("email") %>
+
     <jsp:include page="/page/frame/foot.jsp"></jsp:include>
   </body>
 </html>

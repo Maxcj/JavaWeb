@@ -22,4 +22,8 @@ public class PasswordUtil {
         return new BigInteger(1, digest).toString(16);
     }
 
+    public static void main(String[] args) {
+        System.out.println(encPassword("123"));
+    }
+
 }
